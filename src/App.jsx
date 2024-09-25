@@ -29,7 +29,10 @@ export const App = () => {
         <h1 className="title">Product Categories</h1>
 
         <div className="block">
-          <Navigation />
+          <Navigation
+            users={usersFromServer}
+            categories={categoriesFromServer}
+          />
         </div>
 
         <ProductList products={products} />

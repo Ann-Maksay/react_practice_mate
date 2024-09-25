@@ -4,7 +4,7 @@ export const CategoryFilter = ({ categories }) => {
       <a
         href="#/"
         data-cy="AllCategories"
-        className="button is-success mr-6 is-outlined"
+        className="button is-success mr-6 is-outlined is-info"
       >
         All
       </a>
@@ -12,7 +12,7 @@ export const CategoryFilter = ({ categories }) => {
       {categories.map(category => (
         <a
           data-cy="Category"
-          className="button mr-2 my-1 is-info"
+          className="button mr-2 my-1"
           href="#/"
           key={category.id}
         >

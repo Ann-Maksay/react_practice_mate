@@ -1,4 +1,4 @@
-export const SearchBar = () => {
+export const SearchBar = ({ onSearch, searchQuery }) => {
   return (
     <div className="panel-block">
       <p className="control has-icons-left has-icons-right">
@@ -7,7 +7,10 @@ export const SearchBar = () => {
           type="text"
           className="input"
           placeholder="Search"
-          value="qwe"
+          value={searchQuery}
+          onChange={event => {
+            onSearch(event.target.value);
+          }}
         />
 
         <span className="icon is-left">

@@ -38,7 +38,9 @@ const getVisibleProducts = (
 
   if (formattedSearchQuery) {
     filtredProducts = filtredProducts.filter(product => {
-      return product.name.includes(formattedSearchQuery);
+      const formettedProductName = product.name.toLowerCase();
+
+      return formettedProductName.includes(formattedSearchQuery);
     });
   }
 

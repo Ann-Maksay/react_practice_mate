@@ -17,10 +17,17 @@ export const SearchBar = ({ onSearch, searchQuery }) => {
           <i className="fas fa-search" aria-hidden="true" />
         </span>
 
-        <span className="icon is-right">
-          {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-          <button data-cy="ClearButton" type="button" className="delete" />
-        </span>
+        {searchQuery && (
+          <span className="icon is-right">
+            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+            <button
+              data-cy="ClearButton"
+              type="button"
+              className="delete"
+              onClick={() => onSearch('')}
+            />
+          </span>
+        )}
       </p>
     </div>
   );

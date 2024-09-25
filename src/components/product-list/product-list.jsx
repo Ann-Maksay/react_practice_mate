@@ -1,6 +1,10 @@
 import cn from 'classnames';
 
-export const ProductList = ({ products }) => {
+import { SORTING_TYPES } from '../../constants';
+
+const columnList = Object.values(SORTING_TYPES);
+
+export const ProductList = ({ products, onSort, sorting }) => {
   return (
     <div className="box table-container">
       {!products.length ? (
@@ -14,49 +18,29 @@ export const ProductList = ({ products }) => {
         >
           <thead>
             <tr>
-              <th>
-                <span className="is-flex is-flex-wrap-nowrap">
-                  ID
-                  <a href="#/">
-                    <span className="icon">
-                      <i data-cy="SortIcon" className="fas fa-sort" />
-                    </span>
-                  </a>
-                </span>
-              </th>
-
-              <th>
-                <span className="is-flex is-flex-wrap-nowrap">
-                  Product
-                  <a href="#/">
-                    <span className="icon">
-                      <i data-cy="SortIcon" className="fas fa-sort-down" />
-                    </span>
-                  </a>
-                </span>
-              </th>
-
-              <th>
-                <span className="is-flex is-flex-wrap-nowrap">
-                  Category
-                  <a href="#/">
-                    <span className="icon">
-                      <i data-cy="SortIcon" className="fas fa-sort-up" />
-                    </span>
-                  </a>
-                </span>
-              </th>
-
-              <th>
-                <span className="is-flex is-flex-wrap-nowrap">
-                  User
-                  <a href="#/">
-                    <span className="icon">
-                      <i data-cy="SortIcon" className="fas fa-sort" />
-                    </span>
-                  </a>
-                </span>
-              </th>
+              {columnList.map(column => (
+                <th key={column}>
+                  <span className="is-flex is-flex-wrap-nowrap">
+                    {column}
+                    <a href="#/" onClick={() => onSort(column)}>
+                      <span className="icon">
+                        <i
+                          data-cy="SortIcon"
+                          className={cn('fas', {
+                            'fa-sort': sorting.column !== column,
+                            'fa-sort-up':
+                              sorting.column === column &&
+                              sorting.order === 'asc',
+                            'fa-sort-down':
+                              sorting.column === column &&
+                              sorting.order === 'des',
+                          })}
+                        />
+                      </span>
+                    </a>
+                  </span>
+                </th>
+              ))}
             </tr>
           </thead>
 

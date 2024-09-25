@@ -72,10 +72,8 @@ export const App = () => {
     setOwnerFilter(owner);
   };
 
-  const handleCategoryFilter = category => {
-    if (!categoryFilter.includes(category)) {
-      setCategoryFilter([...categoryFilter, category]);
-    }
+  const handleCategoryFilter = selectedCategories => {
+    setCategoryFilter([...selectedCategories]);
   };
 
   const handleReset = () => {
